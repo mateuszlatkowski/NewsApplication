@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">NewsApp</string>
+    <string name="app_name">WIADOMOŚCI</string>
+
+    // list news
+    <string name="galleryImageDescription">Zdjęcie nagłówka</string>
+    <string name="newsTitle">To jest tytuł wiadomości</string>
+    <string name="newsDescription">To jest krótki opis wiadomości</string>
+    <string name="newsAuthor">Autor artykułu</string>
+    <string name="newsTime">Data</string>
 </resources>
