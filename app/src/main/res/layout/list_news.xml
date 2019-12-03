@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/transparent"
@@ -12,36 +8,86 @@
     android:padding="8dp"
     android:baselineAligned="false">
 
-    <TextView
-        android:id="@+id/newsTitle"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:scrollHorizontally="true"
-        android:shadowColor="#000"
-        android:shadowRadius="1.0"
-        android:text="@string/newsTitle"
-        android:textColor="#666666"
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="4dp">
 
-    <TextView
-        android:id="@+id/newsDescription"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imageViewArticle"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:contentDescription="@string/galleryImageDescription" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="2"
-        android:minLines="2"
-        android:scrollHorizontally="true"
-        android:text="@string/newsDescription"
-        android:textColor="#777777"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newsTitle" />
+        android:orientation="vertical"
+        android:layout_weight="7" >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:shadowColor="#000"
+            android:shadowRadius="1.0"
+            android:textColor="#666666"
+            android:textSize="17sp"
+            android:layout_marginBottom="5dp"
+            android:maxLines="2"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:text="@string/newsTitle" />
+
+        <TextView
+            android:id="@+id/textViewTitleDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#777777"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:minLines="2"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:text="@string/newsDescription"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewAuthor"
+                    android:textSize="15sp"
+                    android:textColor="#42A5F5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/newsAuthor"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/textViewTime"
+                android:gravity="end"
+                android:textSize="14sp"
+                android:textColor="#42A5F5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/newsTime" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
