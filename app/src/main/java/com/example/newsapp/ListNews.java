@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,8 +41,11 @@ public class ListNews extends BaseAdapter {
         if (convertView == null) {
             holder = new ListNewsViewHolder();
             convertView = LayoutInflater.from(activity).inflate(R.layout.list_news, parent, false);
-            holder.title = (TextView) convertView.findViewById(R.id.newsTitle);
-            holder.description = (TextView) convertView.findViewById(R.id.newsDescription);
+            holder.title = (TextView) convertView.findViewById(R.id.textViewTitle);
+            holder.description = (TextView) convertView.findViewById(R.id.textViewTitleDescription);
+            holder.author = (TextView) convertView.findViewById(R.id.textViewAuthor);
+            holder.date = (TextView) convertView.findViewById(R.id.textViewTime);
+            holder.image = (ImageView) convertView.findViewById(R.id.imageViewArticle);
             convertView.setTag(holder);
         } else {
             holder = (ListNewsViewHolder) convertView.getTag();
@@ -50,6 +53,9 @@ public class ListNews extends BaseAdapter {
 
         holder.title.setId(position);
         holder.description.setId(position);
+        holder.author.setId(position);
+        holder.date.setId(position);
+        holder.image.setId(position);
 
         HashMap<String, String> hashMap = new HashMap<String, String>();
         hashMap = data.get(position);
@@ -57,12 +63,27 @@ public class ListNews extends BaseAdapter {
         try {
             holder.title.setText(hashMap.get(MainActivity.TITLE));
             holder.description.setText(hashMap.get(MainActivity.DESCRIPTION));
-        } catch (Exception e) {
-        }
+            holder.author.setText(hashMap.get(MainActivity.AUTHOR));
+            holder.date.setText(hashMap.get(MainActivity.DATE));
+
+            if (hashMap.get(MainActivity.URL_IMAGE).toString().length() < 5) {
+                holder.image.setVisibility(View.GONE);
+            } else {
+                Picasso.get()
+                        .load(hashMap.get(MainActivity.URL_IMAGE))
+                        .resize(300, 200)
+                        .centerCrop()
+                        .into(holder.image);
+            }
+        } catch (Exception e) {}
         return convertView;
     }
 }
 
 class ListNewsViewHolder {
-    TextView title, description;
+    TextView title;
+    TextView description;
+    TextView author;
+    TextView date;
+    ImageView image;
 }
