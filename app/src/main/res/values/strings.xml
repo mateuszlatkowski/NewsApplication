@@ -1,10 +1,13 @@
 <resources>
-    <string name="app_name">WIADOMOŚCI</string>
+    <string name="app_name">Flash News</string>
 
     // list news
     <string name="galleryImageDescription">Zdjęcie nagłówka</string>
-    <string name="newsTitle">To jest tytuł wiadomości</string>
-    <string name="newsDescription">To jest krótki opis wiadomości</string>
+    <string name="newsTitle">To jest tytuł artykułu</string>
+    <string name="newsDescription">To jest krótki opis artykułu</string>
     <string name="newsAuthor">Autor artykułu</string>
     <string name="newsTime">Data</string>
+    <string name="title_activity_example">Example</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>
