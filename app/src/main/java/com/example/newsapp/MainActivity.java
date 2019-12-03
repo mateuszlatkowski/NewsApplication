@@ -1,13 +1,17 @@
 package com.example.newsapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
-import android.widget.Adapter;
-import android.widget.AdapterView;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.ListView;
+import android.widget.TableLayout;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,14 +22,19 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ListView listView;
+    private ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
 
     private String API_KEY = "6804dc4e59854c6a931d2a290a3e5f2f";
 
-    private ListView listView;
-    private ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
     static final String TITLE = "title";
     static final String DESCRIPTION = "description";
+    static final String AUTHOR = "author";
+    static final String URL = "url";
+    static final String URL_IMAGE = "urlToImage";
+    static final String DATE = "publishedAt";
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
                     HashMap<String, String> map = new HashMap<>();
                     map.put(TITLE, jsonObject.optString(TITLE));
                     map.put(DESCRIPTION, jsonObject.optString(DESCRIPTION));
+                    map.put(AUTHOR, jsonObject.optString(AUTHOR));
+                    map.put(URL, jsonObject.optString(URL));
+                    map.put(URL_IMAGE, jsonObject.optString(URL_IMAGE));
+                    map.put(DATE, jsonObject.optString(DATE));
                     arrayList.add(map);
                 }
             } catch (JSONException e) {
