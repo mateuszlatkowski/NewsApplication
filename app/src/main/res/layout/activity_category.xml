@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:paddingTop="150dp"
+    tools:context=".Category">
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ogólne"
+        android:layout_gravity="center"
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="112dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Biznes"
+        android:layout_gravity="center"
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="112dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rozrywka"
+        android:layout_gravity="center"
+        tools:layout_editor_absoluteX="123dp"
+        tools:layout_editor_absoluteY="181dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zdrowie"
+        android:layout_gravity="center"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="366dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nauka"
+        android:layout_gravity="center"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="483dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sport"
+        android:layout_gravity="center"
+        tools:layout_editor_absoluteX="173dp"
+        tools:layout_editor_absoluteY="264dp" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Technologia"
+        android:layout_gravity="center"
+        tools:layout_editor_absoluteX="165dp"
+        tools:layout_editor_absoluteY="49dp" />
+
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ULUBIONE"
+        android:layout_gravity="center"
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="112dp" />
+</LinearLayout>
