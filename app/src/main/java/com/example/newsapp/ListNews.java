@@ -61,16 +61,16 @@ public class ListNews extends BaseAdapter {
         hashMap = data.get(position);
 
         try {
-            holder.title.setText(hashMap.get(MainActivity.TITLE));
-            holder.description.setText(hashMap.get(MainActivity.DESCRIPTION));
-            holder.author.setText(hashMap.get(MainActivity.AUTHOR));
-            holder.date.setText(hashMap.get(MainActivity.DATE));
+            holder.title.setText(hashMap.get(ArticleList.TITLE));
+            holder.description.setText(hashMap.get(ArticleList.DESCRIPTION));
+            holder.author.setText(hashMap.get(ArticleList.AUTHOR));
+            holder.date.setText(hashMap.get(ArticleList.DATE));
 
-            if (hashMap.get(MainActivity.URL_IMAGE).toString().length() < 5) {
+            if (hashMap.get(ArticleList.URL_IMAGE).toString().length() < 5) {
                 holder.image.setVisibility(View.GONE);
             } else {
                 Picasso.get()
-                        .load(hashMap.get(MainActivity.URL_IMAGE))
+                        .load(hashMap.get(ArticleList.URL_IMAGE))
                         .resize(300, 200)
                         .centerCrop()
                         .into(holder.image);
