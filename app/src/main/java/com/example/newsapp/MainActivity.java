@@ -1,92 +1,65 @@
 package com.example.newsapp;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.AsyncTask;
-import android.os.Build;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.Toast;
-import android.widget.Toolbar;
+import android.widget.SimpleAdapter;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.newsapp.R.id;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView listView;
-    private ArrayList<HashMap<String, String>> arrayList = new ArrayList<>();
+    private ArrayAdapter<String> arrayAdapterCountry;
 
-    private String API_KEY = "6804dc4e59854c6a931d2a290a3e5f2f";
-
-    static final String TITLE = "title";
-    static final String DESCRIPTION = "description";
-    static final String AUTHOR = "author";
-    static final String URL = "url";
-    static final String URL_IMAGE = "urlToImage";
-    static final String DATE = "publishedAt";
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = findViewById(R.id.listNews);
+        listView = findViewById(R.id.listViewCountry);
 
-        if (ConnectionAPI.isNewtork(getApplicationContext())) {
-            DownloadNews downloadNews = new DownloadNews();
-            downloadNews.execute();
-        } else {
-            Toast.makeText(MainActivity.this, "Brak połączenia z internetem", Toast.LENGTH_SHORT).show();
-        }
-    }
+        final String[] country = {"Argentyna", "Brazylia", "Bułgaria", "Chiny", "Czechy", "Francja", "Niemcy", "Norwegia", "Polska", "Ukraina", "Wielka Brytania"};
+        final String[] country_ID = {"ar", "br", "bg", "cn", "cz", "fr", "de", "no", "pl", "ua", "gb"};
 
-    class DownloadNews extends AsyncTask<String, Void, String> {
+        int[] flags = {R.drawable.argentyna, R.drawable.brazylia, R.drawable.bulgaria, R.drawable.chiny, R.drawable.czechy, R.drawable.francja, R.drawable.niemcy, R.drawable.norwegia, R.drawable.polska, R.drawable.ukraina, R.drawable.gb};
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
+        List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
 
-        @Override
-        protected String doInBackground(String... args) {
-            String url = ConnectionAPI.executeGet("https://newsapi.org/v2/top-headlines?country=pl&apiKey=" + API_KEY);
-            return url;
+        for (int i = 0; i < 11; i++) {
+            HashMap<String, String> hashMap = new HashMap<String, String>();
+            hashMap.put("txt", country[i]);
+            hashMap.put("id", country_ID[i]);
+            hashMap.put("flag", Integer.toString(flags[i]));
+            aList.add(hashMap);
         }
 
-        @Override
-        protected void onPostExecute(String url) {
+        String[] from = {"flag", "txt", "id"};
+        int[] to = {R.id.imageViewFlag, R.id.textViewCountry, R.id.textViewCountryID};
 
-            try {
-                JSONObject jsonResponse = new JSONObject(url);
-                JSONArray jsonArray = jsonResponse.optJSONArray("articles");
+        SimpleAdapter adapter = new SimpleAdapter(getBaseContext(), aList, R.layout.list_country, from, to);
 
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    HashMap<String, String> map = new HashMap<>();
-                    map.put(TITLE, jsonObject.optString(TITLE));
-                    map.put(DESCRIPTION, jsonObject.optString(DESCRIPTION));
-                    map.put(AUTHOR, jsonObject.optString(AUTHOR));
-                    map.put(URL, jsonObject.optString(URL));
-                    map.put(URL_IMAGE, jsonObject.optString(URL_IMAGE));
-                    map.put(DATE, jsonObject.optString(DATE));
-                    arrayList.add(map);
-                }
-            } catch (JSONException e) {
-                Toast.makeText(MainActivity.this, "Błąd pobierania informacji!", Toast.LENGTH_SHORT).show();
+        arrayAdapterCountry = new ArrayAdapter<String>(MainActivity.this, R.layout.list_country, R.id.textViewCountry, country);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent categoryList = new Intent(MainActivity.this, Category.class);
+                categoryList.putExtra("Kraj", country_ID[position]);
+                startActivity(categoryList);
             }
+        });
 
-            ListNews adapter = new ListNews(MainActivity.this, arrayList);
-            listView.setAdapter(adapter);
-        }
     }
 }
