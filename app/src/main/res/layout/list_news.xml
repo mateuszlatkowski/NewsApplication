@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/transparent"
     android:descendantFocusability="blocksDescendants"
     android:orientation="horizontal"
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="7" >
+
 
         <TextView
             android:id="@+id/textViewTitle"
@@ -89,5 +91,6 @@
                 android:text="@string/newsTime" />
 
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>
