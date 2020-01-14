@@ -8,10 +8,14 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -22,6 +26,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ArticleList extends AppCompatActivity {
 
@@ -53,6 +58,7 @@ public class ArticleList extends AppCompatActivity {
         listView = findViewById(R.id.listNews);
         progressBar = findViewById(R.id.loader);
         listView.setEmptyView(progressBar);
+        listView.setTextFilterEnabled(true);
 
         if (ConnectionAPI.isNewtork(getApplicationContext())) {
             DownloadNews downloadNews = new DownloadNews();
