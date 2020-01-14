@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,7 +14,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ListNews extends BaseAdapter {
+public class ListNews extends BaseAdapter{
 
     private Activity activity;
     private ArrayList<HashMap<String, String>> data;
@@ -41,11 +42,11 @@ public class ListNews extends BaseAdapter {
         if (convertView == null) {
             holder = new ListNewsViewHolder();
             convertView = LayoutInflater.from(activity).inflate(R.layout.list_news, parent, false);
-            holder.title = (TextView) convertView.findViewById(R.id.textViewTitle);
-            holder.description = (TextView) convertView.findViewById(R.id.textViewTitleDescription);
-            holder.author = (TextView) convertView.findViewById(R.id.textViewAuthor);
-            holder.date = (TextView) convertView.findViewById(R.id.textViewTime);
-            holder.image = (ImageView) convertView.findViewById(R.id.imageViewArticle);
+            holder.title = convertView.findViewById(R.id.textViewTitle);
+            holder.description = convertView.findViewById(R.id.textViewTitleDescription);
+            holder.author = convertView.findViewById(R.id.textViewAuthor);
+            holder.date = convertView.findViewById(R.id.textViewTime);
+            holder.image = convertView.findViewById(R.id.imageViewArticle);
             convertView.setTag(holder);
         } else {
             holder = (ListNewsViewHolder) convertView.getTag();
@@ -75,7 +76,9 @@ public class ListNews extends BaseAdapter {
                         .centerCrop()
                         .into(holder.image);
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {
+        }
+
         return convertView;
     }
 }
