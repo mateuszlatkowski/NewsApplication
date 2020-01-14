@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import javax.xml.parsers.FactoryConfigurationError;
+
 public class Category extends AppCompatActivity{
 
     private Button buttonGeneral;
@@ -122,7 +124,7 @@ public class Category extends AppCompatActivity{
         buttonFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Category.this, "Ulubione będą wkrótce!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(Category.this, Favorite.class));
             }
         });
 
