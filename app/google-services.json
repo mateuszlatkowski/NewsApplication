@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "381470669609",
+    "firebase_url": "https://flashnewsapp-50914.firebaseio.com",
+    "project_id": "flashnewsapp-50914",
+    "storage_bucket": "flashnewsapp-50914.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381470669609:android:bd0d72f067683059281538",
+        "android_client_info": {
+          "package_name": "com.example.newsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381470669609-0sua4i23cu0q0d2jqdlju4r8dd35tdef.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.newsapp",
+            "certificate_hash": "21aeb98deaab8d20a6219f3befb98ce1385d41fb"
+          }
+        },
+        {
+          "client_id": "381470669609-p2it48pg72fpkmgobm299a4alc7k6k07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYrpLhjlFDXsxDpW-JXGEV8v-kpMUxiAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381470669609-p2it48pg72fpkmgobm299a4alc7k6k07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
