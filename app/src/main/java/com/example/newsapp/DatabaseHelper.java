@@ -1,58 +1,70 @@
 package com.example.newsapp;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.DatabaseErrorHandler;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Build;
+public class DatabaseHelper  {
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
+   private String Title;
+   private String Description;
+   private String Author;
+   private String URL;
+   private String URL_Image;
+   private String Date;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+   public DatabaseHelper() {}
 
-    public static final String DATABASE_NAME = "mylist.db";
-    public static final String TABLE_NAME = "mylist_data";
-    public static final String COL1 = "ID";
-    public static final String COL2 = "ITEM1";
+   public DatabaseHelper(String title, String description, String author, String URL, String URL_Image, String date) {
+      this.Title = title;
+      this.Description = description;
+      this.Author = author;
+      this.URL = URL;
+      this.URL_Image = URL_Image;
+      this.Date = date;
+   }
 
+   public String getTitle() {
+      return Title;
+   }
 
-    public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
-    }
+   public void setTitle(String title) {
+      Title = title;
+   }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                " ITEM1 TEXT)";
-        db.execSQL(createTable);
-    }
+   public String getDescription() {
+      return Description;
+   }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP IF TABLE EXISTS " + TABLE_NAME);
-        onCreate(db);
-    }
+   public void setDescription(String description) {
+      Description = description;
+   }
 
-    public boolean addData(String item1) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, item1);
+   public String getAuthor() {
+      return Author;
+   }
 
-        long result = db.insert(TABLE_NAME, null, contentValues);
+   public void setAuthor(String author) {
+      Author = author;
+   }
 
-        if (result == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-    public Cursor getListContents(){
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-        return data;
-    }
+   public String getURL() {
+      return URL;
+   }
+
+   public void setURL(String URL) {
+      this.URL = URL;
+   }
+
+   public String getURL_Image() {
+      return URL_Image;
+   }
+
+   public void setURL_Image(String URL_Image) {
+      this.URL_Image = URL_Image;
+   }
+
+   public String getDate() {
+      return Date;
+   }
+
+   public void setDate(String date) {
+      Date = date;
+   }
 }
