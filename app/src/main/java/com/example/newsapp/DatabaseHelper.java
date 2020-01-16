@@ -8,16 +8,18 @@ public class DatabaseHelper  {
    private String URL;
    private String URL_Image;
    private String Date;
+   private String ID_ARTICLE;
 
    public DatabaseHelper() {}
 
-   public DatabaseHelper(String title, String description, String author, String URL, String URL_Image, String date) {
+   public DatabaseHelper(String title, String description, String author, String URL, String URL_Image, String date, String ID_ARTICLE) {
       this.Title = title;
       this.Description = description;
       this.Author = author;
       this.URL = URL;
       this.URL_Image = URL_Image;
       this.Date = date;
+      this.ID_ARTICLE = ID_ARTICLE;
    }
 
    public String getTitle() {
@@ -67,4 +69,12 @@ public class DatabaseHelper  {
    public void setDate(String date) {
       Date = date;
    }
+
+    public String getID_ARTICLE() {
+        return ID_ARTICLE;
+    }
+
+    public void setID_ARTICLE(String ID_ARTICLE) {
+        this.ID_ARTICLE = ID_ARTICLE;
+    }
 }

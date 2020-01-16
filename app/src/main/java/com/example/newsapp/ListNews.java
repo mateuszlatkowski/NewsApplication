@@ -103,6 +103,7 @@ public class ListNews extends BaseAdapter{
                     databaseReference.child(id_article).child("URL_Image").setValue(finalHashMap.get(ArticleList.URL_IMAGE));
                     databaseReference.child(id_article).child("URL").setValue(finalHashMap.get(ArticleList.URL));
                     databaseReference.child(id_article).child("Author").setValue(finalHashMap.get(ArticleList.AUTHOR));
+                    databaseReference.child(id_article).child("ID_ARTICLE").setValue(id_article);
 
                     Toast.makeText(activity, "Dodano do ulubionych!", Toast.LENGTH_SHORT).show();
                 }
