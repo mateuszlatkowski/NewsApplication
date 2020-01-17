@@ -9,9 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -33,7 +35,8 @@ public class Favorite extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listView = findViewById(R.id.listFavorite);
-        Query query = FirebaseDatabase.getInstance().getReference().child("Favorites");
+
+        final Query query = FirebaseDatabase.getInstance().getReference().child("Favorites");
         FirebaseListOptions<DatabaseHelper> options = new FirebaseListOptions.Builder<DatabaseHelper>()
                 .setLayout(R.layout.list_favorite)
                 .setLifecycleOwner(Favorite.this)
@@ -48,8 +51,9 @@ public class Favorite extends AppCompatActivity {
                 TextView author = v.findViewById(R.id.textViewAuthorFavorite);
                 TextView date = v.findViewById(R.id.textViewTimeFavorite);
                 ImageView image = v.findViewById(R.id.imageViewArticleFavorite);
+                ImageButton delete = v.findViewById(R.id.imageButtonDelete);
 
-                DatabaseHelper databaseHelper = (DatabaseHelper) model;
+                final DatabaseHelper databaseHelper = (DatabaseHelper) model;
                 title.setText(databaseHelper.getTitle().toString());
                 description.setText(databaseHelper.getDescription().toString());
                 author.setText(databaseHelper.getAuthor().toString());
@@ -63,6 +67,14 @@ public class Favorite extends AppCompatActivity {
                 Glide.with(Favorite.this).load(databaseHelper.getURL_Image().toString()).apply(requestOptions).into(image);
 
                 url = databaseHelper.getURL().toString();
+
+                delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        query.getRef().child(databaseHelper.getID_ARTICLE()).removeValue();
+                        Toast.makeText(Favorite.this, "Artykuł został usunięty!", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         };
         listView.setAdapter(adapter);
